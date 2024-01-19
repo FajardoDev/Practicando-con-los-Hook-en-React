@@ -1,10 +1,13 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useFormulario } from "../hooks/useFormulario";
+import { Error } from "../components/Error";
 
 export const FocusScreen = () => {
-	const { onInputChange, onResetForm, nombre } = useFormulario({
+	const { onInputChange, onResetForm, nombre, error } = useFormulario({
 		nombre: "",
 	});
+
+	// console.log(error);
 
 	const inputRef = useRef();
 
@@ -20,7 +23,7 @@ export const FocusScreen = () => {
 
 			<hr />
 
-			<div className="mt-4 max-w-lg">
+			<div className="mt-4 max-w-lg space-y-3">
 				<label className="block">
 					<span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-400">
 						Nombre:
@@ -36,6 +39,8 @@ export const FocusScreen = () => {
 					/>
 				</label>
 
+				{/* {error && <Error>{error}</Error>} */}
+
 				<button
 					className="bg-blue-900 py-2 px-6 hover:bg-blue-800 transition-colors"
 					onClick={onFocusBtn}
@@ -43,8 +48,11 @@ export const FocusScreen = () => {
 					Set Focus
 				</button>
 				<button
-					className="bg-red-900 py-2 px-6 hover:bg-red-800 transition-colors ml-8"
+					className={`bg-red-900 py-2 px-6 hover:bg-red-800 transition-colors ml-8 ${
+						nombre !== "" ? "" : "cursor-not-allowed opacity-50"
+					}`}
 					onClick={onResetForm}
+					disabled={nombre === ""}
 				>
 					Reset
 				</button>
