@@ -44,14 +44,10 @@ export const useTodo = () => {
 		});
 	};
 
-	const contarDoneTrue = (array) =>
-		array.reduce((count, todo) => count + (todo.done ? 1 : 0), 0);
-	const cantidad = contarDoneTrue(todos);
-
+	const cantidad = todos.filter((todo) => todo.done).length;
 	const pendiente = todos.length - cantidad;
 
 	return {
-		...todos,
 		todos,
 		handleNewTodo,
 		handleDeleteTodo,
@@ -60,6 +56,11 @@ export const useTodo = () => {
 		pendiente,
 	};
 };
+
+// Rotorna la cantidad
+// const contarDoneTrue = (array) =>
+// 	array.reduce((count, todo) => count + (todo.done ? 1 : 0), 0);
+// const cantidad = contarDoneTrue(todos);
 
 // Saber la cantidad de todos y  traer solo los true
 // const filtrarTrue = (array) => {

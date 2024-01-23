@@ -19,7 +19,6 @@ export const TodoAdd = ({ onNewTodo }) => {
 			fecha: Date.now(),
 		};
 
-		// Si existe no se volverá a llamar
 		onNewTodo(newTodo);
 		onResetForm();
 	};

@@ -1,18 +1,18 @@
-import { TodoItem } from "./TodoItem";
+// import { TodoItem } from "./TodoItem";
 
-export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo }) => {
-	// console.log(todo);
+// export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo }) => {
+// 	// console.log(todo);
 
-	return (
-		<>
-			{todos.map((todo) => (
-				<TodoItem
-					key={todo.id}
-					todo={todo}
-					onDeleteTodo={onDeleteTodo}
-					onToggleTodo={onToggleTodo}
-				/>
-			))}
-		</>
-	);
-};
+// 	return (
+// 		<>
+// 			{todos.map((todo) => (
+// 				<TodoItem
+// 					key={todo.id}
+// 					todo={todo}
+// 					onDeleteTodo={onDeleteTodo}
+// 					onToggleTodo={onToggleTodo}
+// 				/>
+// 			))}
+// 		</>
+// 	);
+// };

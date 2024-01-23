@@ -1,6 +1,7 @@
+import React from "react";
 import { FormatearFecha, horaActual } from "../helpers/FormaterarFecha";
 
-export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo }) => {
+export const TodoItem = React.memo(({ todo, onDeleteTodo, onToggleTodo }) => {
 	const { done } = todo;
 	const { fecha } = todo;
 	const hora = horaActual();
@@ -47,4 +48,4 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo }) => {
 			</div>
 		</>
 	);
-};
+});

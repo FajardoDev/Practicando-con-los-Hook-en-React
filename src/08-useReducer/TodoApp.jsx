@@ -1,4 +1,3 @@
-import { TodoList } from "./TodoList";
 import { TodoAdd } from "./TodoAdd";
 import { FiltrarTodo } from "./FiltrarTodo";
 import { useTodo } from "./hooks/useTodo";
@@ -58,15 +57,17 @@ export const TodoApp = () => {
 						</span>
 					</p>
 
-					<FiltrarTodo />
-
-					{/* List */}
-
-					<TodoList
+					<FiltrarTodo
 						todos={todos}
 						onDeleteTodo={handleDeleteTodo}
 						onToggleTodo={handleToggleTodo}
 					/>
+
+					{/* List */}
+
+					{/* <TodoList
+						
+					/> */}
 				</div>
 			</div>
 		</>

@@ -1,4 +1,26 @@
-export const FiltrarTodo = ({ error }) => {
+import { useEffect, useState } from "react";
+import { TodoItem } from "./TodoItem";
+
+export const FiltrarTodo = ({
+	todos = [],
+	onDeleteTodo,
+	onToggleTodo,
+	error,
+}) => {
+	const [filtro, setFiltro] = useState("");
+
+	const cambiarFiltro = ({ target }) => {
+		setFiltro(target.value);
+	};
+
+	const tareasFiltradas = todos.filter((todo) => {
+		const descripcionMinuscula = todo.description;
+
+		const filtroMinuscula = filtro;
+
+		return descripcionMinuscula.includes(filtroMinuscula);
+	});
+
 	return (
 		<div>
 			<form className="my-4">
@@ -25,8 +47,8 @@ export const FiltrarTodo = ({ error }) => {
 					<input
 						type="text"
 						name="search"
-						// value={inputValue}
-						// onChange={onInputChange}
+						value={filtro}
+						onChange={cambiarFiltro}
 						className={`hover:bottom-5 placeholder:italic bg-white w-full border  block  rounded-full py-3 pl-12 pr-3 shadow-md shadow-black/50 focus:outline-none sm:text-sm text-slate-700 font-semibold text-base focus:ring-1 ${
 							error
 								? " placeholder:text-red-600/60 focus:border-red-500 focus:ring-red-500 border border-red-600"
@@ -40,9 +62,15 @@ export const FiltrarTodo = ({ error }) => {
 					/>
 				</label>
 			</form>
-			{/* <h2 className={`text-center text-xl text-fuchsia-400`}>
-				{todos.length ? "Lista de Tareas" : "No Hay Tareas Aún"}
-			</h2> */}
+
+			{tareasFiltradas.map((todo) => (
+				<TodoItem
+					key={todo.id}
+					todo={todo}
+					onDeleteTodo={onDeleteTodo}
+					onToggleTodo={onToggleTodo}
+				/>
+			))}
 		</div>
 	);
 };
