@@ -6,6 +6,9 @@ export const FiltrarTodo = ({
 	onDeleteTodo,
 	onToggleTodo,
 	error,
+	onEditarTodo,
+	setEditTodo,
+	editTodo,
 }) => {
 	const [filtro, setFiltro] = useState("");
 
@@ -15,6 +18,10 @@ export const FiltrarTodo = ({
 
 	const tareasFiltradas = todos.filter((todo) => {
 		const descripcionMinuscula = todo.description;
+		// const descripcionMinuscula =
+		// 	todo && todo.description ? todo.description.toLowerCase() : "";
+
+		// console.log(descripcionMinuscula);
 
 		const filtroMinuscula = filtro;
 
@@ -69,8 +76,26 @@ export const FiltrarTodo = ({
 					todo={todo}
 					onDeleteTodo={onDeleteTodo}
 					onToggleTodo={onToggleTodo}
+					onEditarTodo={onEditarTodo}
+					setEditTodo={setEditTodo}
 				/>
 			))}
+			{/* {tareasFiltradas.map((todo) => {
+				// Verificar si el todo editado es igual al existente
+				const esTodoEditado = editTodo.id === todo.id;
+
+				return (
+					<TodoItem
+						key={todo.id}
+						todo={todo}
+						onDeleteTodo={onDeleteTodo}
+						onToggleTodo={onToggleTodo}
+						onEditarTodo={onEditarTodo}
+						setEditTodo={setEditTodo}
+						mostrar={!esTodoEditado} // Controla si se debe mostrar o no
+					/>
+				);
+			})} */}
 		</div>
 	);
 };

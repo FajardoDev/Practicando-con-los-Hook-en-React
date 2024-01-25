@@ -14,6 +14,8 @@
 
 import { TodoApp } from "./08-useReducer/TodoApp";
 
+// import { MainApp } from "./09-useContext/MainApp";
+
 export const HooksApp = () => {
 	return (
 		<>
@@ -29,6 +31,7 @@ export const HooksApp = () => {
 			{/* <Callback /> */}
 			{/* <Padre /> */}
 			<TodoApp />
+			{/* <MainApp /> */}
 		</>
 	);
 };

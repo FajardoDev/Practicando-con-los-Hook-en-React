@@ -9,6 +9,9 @@ export const TodoApp = () => {
 		handleNewTodo,
 		handleDeleteTodo,
 		handleToggleTodo,
+		handleEditTodo,
+		setEditTodo,
+		editTodo,
 		cantidad,
 		pendiente,
 	} = useTodo();
@@ -27,7 +30,13 @@ export const TodoApp = () => {
 					<h2 className="text-2xl font-medium text-fuchsia-700">Create new task</h2>
 					<hr />
 
-					<TodoAdd onNewTodo={handleNewTodo} />
+					<TodoAdd
+						todos={todos}
+						onNewTodo={handleNewTodo}
+						editTodo={editTodo}
+						onEditarTodo={handleEditTodo}
+						setEditTodo={setEditTodo}
+					/>
 
 					<img
 						className="rounded-md h-[22rem] mt-4 w-[90%] mx-auto object-cover"
@@ -61,6 +70,9 @@ export const TodoApp = () => {
 						todos={todos}
 						onDeleteTodo={handleDeleteTodo}
 						onToggleTodo={handleToggleTodo}
+						// onEditarTodo={handleEditTodo}
+						setEditTodo={setEditTodo}
+						editTodo={editTodo}
 					/>
 
 					{/* List */}

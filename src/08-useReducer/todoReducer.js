@@ -19,6 +19,18 @@ export const todoReducer = (estadoInicial = [], action) => {
 				return todo;
 			});
 
+		case "[TODO] edit Todo":
+			return estadoInicial.map((todo) => {
+				if (todo.id === action.payload.id) {
+					return {
+						...todo,
+						description: action.payload.description,
+					};
+				}
+
+				return todo;
+			});
+
 		default:
 			return estadoInicial;
 	}

@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { todoReducer } from "../todoReducer";
 
 const estadoInicial = [];
@@ -9,6 +9,7 @@ const initStorage = () => {
 
 export const useTodo = () => {
 	const [todos, dispatch] = useReducer(todoReducer, estadoInicial, initStorage);
+	const [editTodo, setEditTodo] = useState({});
 
 	useEffect(() => {
 		localStorage.setItem("todos", JSON.stringify(todos));
@@ -44,6 +45,17 @@ export const useTodo = () => {
 		});
 	};
 
+	const handleEditTodo = (id, nuevaDescripcion) => {
+		setEditTodo({ id, description: nuevaDescripcion });
+
+		dispatch({
+			type: "[TODO] edit Todo",
+			payload: { id, description: nuevaDescripcion },
+		});
+	};
+
+	// "[TODO] edit Todo"
+
 	const cantidad = todos.filter((todo) => todo.done).length;
 	const pendiente = todos.length - cantidad;
 
@@ -52,8 +64,11 @@ export const useTodo = () => {
 		handleNewTodo,
 		handleDeleteTodo,
 		handleToggleTodo,
+		handleEditTodo,
+		setEditTodo,
 		cantidad,
 		pendiente,
+		editTodo,
 	};
 };
 
