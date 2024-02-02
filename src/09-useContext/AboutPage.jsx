@@ -1,9 +1,19 @@
+import { useContext } from "react";
+import { UserContext } from "./context/UserContext";
+
 export const AboutPage = () => {
+	const { user } = useContext(UserContext);
+
 	return (
 		<>
-			<h1>AboutPage</h1>
+			<div className="contenedor">
+				<h1>
+					About Page: <small>{user?.name}</small>
+				</h1>
 
-			<hr />
+				<hr className="mb-6" />
+				<pre>{JSON.stringify(user, null, 3)}</pre>
+			</div>
 		</>
 	);
 };
